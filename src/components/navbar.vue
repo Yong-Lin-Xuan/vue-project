@@ -12,7 +12,7 @@
               <a class="nav-link active" aria-current="page" href="./test.html">test page</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#pic">地球概論</a>
+              <a class="nav-link" href="#pic">地球概a論</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#intro">生態系統</a>

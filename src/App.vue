@@ -1,8 +1,8 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
-import RwvHeader from "./components/navbar.vue"
-import RwvFooter from "./components/TheFooter.vue"
+import RwvHeader from "@/components/navbar.vue"
+import RwvFooter from "@/components/TheFooter.vue"
 </script>
 
 <template>

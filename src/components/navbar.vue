@@ -1,5 +1,4 @@
 <template>
-    <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
       <a class="navbar-brand ms-4" href="./index.html">Side project demo</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +11,7 @@
               <a class="nav-link active" aria-current="page" href="./test.html">test page</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#pic">地球概a論</a>
+              <a class="nav-link" href="#pic">地球概論</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#intro">生態系統</a>

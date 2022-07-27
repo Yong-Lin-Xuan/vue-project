@@ -1,6 +1,6 @@
 <template>
     <!-- HEADER : header.scss -->
-    <header class="header">
+    <div class="ImgSlider">
       <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -42,8 +42,14 @@
 
         </div>
       </div>
-    </header>
+    </div>
 </template>
+
+<script>
+  export default{
+    name: 'ImgSlider',
+  }
+</script>
 
 <style scoped>
     .header{
@@ -61,7 +67,7 @@
         justify-content: center;
         align-items: flex-start;
         text-align: left;
-        h1{
+        /* h1{
             border-bottom: 2px solid #fff;
             padding-bottom: 0.3em;
             margin-bottom: 0.3em;
@@ -71,7 +77,7 @@
         }
         p{
             width: 50%;
-        }
+        } */
     }
     @media screen and (min-width:480px) {
         .banner-txt{

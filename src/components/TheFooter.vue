@@ -1,6 +1,6 @@
 <template>
     <!-- FOOTER -->
-    <footer class="bg-dark py-5 mt-5">
+    <footer class="bg-dark py-3">
       <div class="container">
         <div class="text-white text-center">
           <h3>自然（英語：Nature）</h3>

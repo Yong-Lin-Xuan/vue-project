@@ -1,6 +1,6 @@
 <template>
     <!-- 選單 -->
-    <section style="background-color:white">
+    <section class="mb-5" style="background-color:white">
       <div class="container">
         <div class="row">
           <div class="col-md-4 mb-4">

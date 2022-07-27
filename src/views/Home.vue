@@ -11,8 +11,8 @@
     <TheIntroCard />
     <div class="title text-white" id="inform"><h1>人類的影響</h1></div>
     <TheContent />
+    <div class="title" id="sec"><h1>現代</h1></div>
   </div>
-  <div class="title" id="sec"><h1>現代</h1></div>
   <TheSection />
 </template>
 
@@ -30,21 +30,24 @@ export default{
     TheContent,
     TheSection,
   },
+  mounted() {
+  window.addEventListener("scroll", this.onScroll)
+  },
+  beforeDestroy() {
+  window.removeEventListener("scroll", this.onScroll)
+  },
+  methods: {
+  onScroll(e) {
+    var headerBg = document.getElementById('bg')
+    this.windowTop = window.top.scrollY
+    headerBg.style.opacity = -0.1+this.windowTop/2000+''
+    // console.log(this.windowTop);
+    }
+  }
 }
-
-var headerBg = document.getElementById('bg')
-window.addEventListener('scroll',function(){
-    headerBg.style.opacity = -0.1+window.pageYOffset/2000+''
-})
 </script>
 
 <style scoped lang="scss">
-  * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    //overflow-x:clip; //修正X軸溢出問題(使用style)
-}
 .main{
     position: relative;
     width: 100%;
@@ -57,12 +60,6 @@ window.addEventListener('scroll',function(){
         height: 100%;
         background:url(/images/993-1440x900.jpg);
         background-attachment: fixed;
-    }
-}
-.action{
-    &:hover{
-        background-image: linear-gradient(0deg, #FE8076,#FEB85D );
-        color: #fff;
     }
 }
 .shadow-b{

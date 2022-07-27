@@ -51,7 +51,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .header{
         width: 100%;
         height: 100%;
@@ -67,7 +67,7 @@
         justify-content: center;
         align-items: flex-start;
         text-align: left;
-        /* h1{
+        h1{
             border-bottom: 2px solid #fff;
             padding-bottom: 0.3em;
             margin-bottom: 0.3em;
@@ -77,7 +77,7 @@
         }
         p{
             width: 50%;
-        } */
+        }
     }
     @media screen and (min-width:480px) {
         .banner-txt{

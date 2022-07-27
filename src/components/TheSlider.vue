@@ -11,7 +11,7 @@
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="3000">
             <div class="shadow-b"></div>
-            <img src="./images/125-1200x800.jpg" class="d-block w-100 banner" alt="...">
+            <img src="/images/125-1200x800.jpg" class="d-block w-100 banner" alt="...">
             <div class="carousel-caption d-md-block">
               <div class="banner-txt">
                 <h1>與大自然共舞</h1>
@@ -24,7 +24,7 @@
 
           <div class="carousel-item" data-bs-interval="3000">
             <div class="shadow-b"></div>
-            <img src="./images/204-1200x800.jpg" class="d-block w-100 banner" alt="...">
+            <img src="/images/204-1200x800.jpg" class="d-block w-100 banner" alt="...">
             <div class="carousel-caption d-md-block">
               <h5>兩者的分野</h5>
               <p>植物與動物的分野並不明顯，有部分分類的生命在她們兩者之間。</p>
@@ -33,7 +33,7 @@
 
           <div class="carousel-item">
             <div class="shadow-b"></div>
-            <img src="./images/208-1200x800.jpg" class="d-block w-100 banner" alt="...">
+            <img src="/images/208-1200x800.jpg" class="d-block w-100 banner" alt="...">
             <div class="carousel-caption d-md-block">
               <h5>地區區系</h5>
               <p>在眾多植物分類方法中，地區區系依研究目的的不同可以包括在上一個紀元的植物殘餘物形成的化石植物。</p>
@@ -47,7 +47,7 @@
 
 <script>
   export default{
-    name: 'ImgSlider',
+    name: 'TheSLider',
   }
 </script>
 

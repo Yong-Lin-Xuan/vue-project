@@ -1,7 +1,5 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-import RwvHeader from "@/components/navbar.vue"
+import RwvHeader from "@/components/TheNavbar.vue"
 import RwvFooter from "@/components/TheFooter.vue"
 export default {
   name: "App",

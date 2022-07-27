@@ -1,11 +1,10 @@
 <template>
     <!-- 內容 -->
-    <div class="title text-white" id="inform"><h1>人類的影響</h1></div>
     <section class="container mt-5">
-      <div class="card mb-3 border-0" style="overflow-x:clip;">
+      <div class="card mb-3 border-0" style="overflow-x:clip;background-color: transparent;">
         <div class="row g-0" data-aos="fade-left">
           <div class="col-md-5">
-            <img src="./images/521-1200x800.jpg" class="img-fluid rounded-start w-100 h-100">
+            <img src="/images/521-1200x800.jpg" class="img-fluid rounded-start w-100 h-100">
           </div>
           <div class="col-md-6 d-flex align-items-center">
             <div class="card-body text-center bg-primary action">
@@ -16,10 +15,10 @@
           </div>
         </div>
       </div>
-      <div class="card mb-3 border-0" data-aos="fade-right">
+      <div class="card mb-3 border-0" data-aos="fade-right" style="background-color: transparent;">
         <div class="row g-0 flex-row-reverse">
           <div class="col-md-5">
-            <img src="./images/523-1200x800.jpg" class="img-fluid rounded-start w-100">
+            <img src="/images/523-1200x800.jpg" class="img-fluid rounded-start w-100">
           </div>
           <div class="col-md-6 d-flex align-items-center">
             <div class="card-body text-center bg-primary action">
@@ -31,5 +30,13 @@
         </div>
       </div>
     </section>
-    </div>
 </template>
+
+<style scoped lang="scss">
+.action{
+    &:hover{
+        background-image: linear-gradient(0deg, #FE8076,#FEB85D );
+        color: #fff;
+    }
+}
+</style>

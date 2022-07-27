@@ -1,7 +1,6 @@
 <template>
     <!-- 選單 -->
-    <div class="title" id="sec"><h1>現代</h1></div>
-    <section>
+    <section style="background-color:white">
       <div class="container">
         <div class="row">
           <div class="col-md-4 mb-4">
@@ -23,7 +22,7 @@
           </div>
           <div class="col-md-4 mb-4">
             <div class="card">
-              <img src="./images/583-1200x800.jpg" class="card-img-top" alt="...">
+              <img src="/images/583-1200x800.jpg" class="card-img-top" alt="...">
               <div class="card-body bg-dark" style="height: 10em;">
                 <h5 class="card-title text-white">自然靈感</h5>
                 <p class="card-text text-white">以仿生學為例，在這一領域，自然的設計元素和流程會成為新材料、新設備和新工具的模板。</p>
@@ -61,3 +60,7 @@
       </div>
     </section>
 </template>
+
+<style scoped lang="scss">
+  
+</style>

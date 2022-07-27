@@ -52,36 +52,44 @@
 </script>
 
 <style scoped lang="scss">
-    .header{
-        width: 100%;
-        height: 100%;
-        margin: auto;
+.header{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+.banner{
+    max-height: 30em;
+    background-color: #ccc;
+}
+.banner-txt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    h1{
+        border-bottom: 2px solid #fff;
+        padding-bottom: 0.3em;
+        margin-bottom: 0.3em;
+        small{
+            display: block;
+        }
     }
-    .banner{
-        max-height: 30em;
-        background-color: #ccc;
+    p{
+        width: 50%;
     }
+}
+.shadow-b{
+    content: '';
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    background: linear-gradient(to top, #000,transparent 60%);
+}
+@media screen and (min-width:480px) {
     .banner-txt{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        text-align: left;
-        h1{
-            border-bottom: 2px solid #fff;
-            padding-bottom: 0.3em;
-            margin-bottom: 0.3em;
-            small{
-                display: block;
-            }
-        }
-        p{
-            width: 50%;
-        }
+        margin-bottom: 2em;
     }
-    @media screen and (min-width:480px) {
-        .banner-txt{
-            margin-bottom: 2em;
-        }
-    }
+}
 </style>

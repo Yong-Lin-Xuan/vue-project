@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-md-4 mb-4" v-for="post in posts">
+          <div class="col-md-4 mb-4 gs_reveal" v-for="post in posts">
             <div class="card">
               <img :src="post.img" class="card-img-top" alt="...">
               <div class="card-body bg-dark" style="height: 10em;">

@@ -1,3 +1,6 @@
+## 已知BUG
+- ScrollTrigger的開始值和結束值會被設置為上一頁的高度
+
 # vue-project
 
 This template should help get you started developing with Vue 3 in Vite.

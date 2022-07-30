@@ -12,49 +12,7 @@
 </template>
 
 <script>
-import { gsap } from 'gsap'
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 export default {
-    name: 'Animate',
-    methods: {
-        aproposAnimation(){
-            const hide = (el) =>{ gsap.to(el, {autoAlpha: 0, overwrite: "auto"}); }
-            const animateFrom = (el, direction) =>{
-                direction = direction || 1;
-                var x = 0,
-                    y = direction * 100;
-                if(el.classList.contains("gs_reveal_fromLeft")) {
-                    x = -100;
-                    y = 0;
-                } else if (el.classList.contains("gs_reveal_fromRight")) {
-                    x = 100;
-                    y = 0;
-                }
-                gsap.fromTo(el, {x: x, y: y, autoAlpha: 0}, {
-                    duration: 5, 
-                    x: 0,
-                    y: 0, 
-                    autoAlpha: 1, 
-                    ease: "expo", 
-                    overwrite: "auto",
-                });
-            }
-            gsap.utils.toArray(".gs_reveal").forEach(function(el,index) {
-                hide(el); // assure that the elent is hidden when scrolled into view
-                ScrollTrigger.create({
-                trigger: el,
-                onEnter: function() { animateFrom(el) }, 
-                onEnterBack: function() { animateFrom(el, -1) },
-                onLeave: function() { hide(el) },
-                onLeaveBack: function() { hide(el) }
-                });
-            });
-        }
-    },
-    mounted() {        
-        this.aproposAnimation();
-    },
     data() {
         return {
             posts: [

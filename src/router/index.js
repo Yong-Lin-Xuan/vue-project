@@ -19,10 +19,6 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
-    mounted(){
-        console.log('ss')
-        ScrollTrigger.refresh();
-    }
 })
 
 export default router

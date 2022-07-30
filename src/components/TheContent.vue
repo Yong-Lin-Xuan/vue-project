@@ -91,6 +91,7 @@ body {
 .ipsGrid > .ipsGrid_span7 {
   width: 57.44680851063829%;
   padding: 2%;
+  z-index: 1;
 }
 .ipsGrid > [class*="ipsGrid_span"] {
   float: left;

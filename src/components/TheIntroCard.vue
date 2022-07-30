@@ -2,45 +2,86 @@
     <!-- 介紹圖卡 : introduceCard.scss -->
     <div class="container wrap-i justify-content-center gs_reveal">
         <div class="item-i" v-for="(post, index) in posts" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-          <img :src="post.img" alt="">
-          <div class="txt">
-            <h2>{{ post.title}}</h2>
-            <p>{{ post.body}}</p>
-          </div>
+            <img :src="post.img" alt="">
+            <div class="txt">
+                <h2>{{ post.title}}</h2>
+                <p>{{ post.body}}</p>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 export default {
-	name: "App",
-	data() {
-		return {
-			posts: [
-				{
-          id: 1,
-					title: "生態系統概念的萌芽",
-					body:
-						"所有形態的生物都會和她們存在的環境及其他生命體互動。在二十世紀此假設引發了「生態系統」的概念，並定義其為在任何情況下的生物與環境間的相互作用。",
-          img: "/images/430-1200x800.jpg"
+    name: 'Animate',
+    methods: {
+        aproposAnimation(){
+            const hide = (el) =>{ gsap.to(el, {autoAlpha: 0, overwrite: "auto"}); }
+            const animateFrom = (el, direction) =>{
+                direction = direction || 1;
+                var x = 0,
+                    y = direction * 100;
+                if(el.classList.contains("gs_reveal_fromLeft")) {
+                    x = -100;
+                    y = 0;
+                } else if (el.classList.contains("gs_reveal_fromRight")) {
+                    x = 100;
+                    y = 0;
+                }
+                gsap.fromTo(el, {x: x, y: y, autoAlpha: 0}, {
+                    duration: 5, 
+                    x: 0,
+                    y: 0, 
+                    autoAlpha: 1, 
+                    ease: "expo", 
+                    overwrite: "auto",
+                });
+            }
+            gsap.utils.toArray(".gs_reveal").forEach(function(el,index) {
+                hide(el); // assure that the elent is hidden when scrolled into view
+                ScrollTrigger.create({
+                trigger: el,
+                onEnter: function() { animateFrom(el) }, 
+                onEnterBack: function() { animateFrom(el, -1) },
+                onLeave: function() { hide(el) },
+                onLeaveBack: function() { hide(el) }
+                });
+            });
+        }
+    },
+    mounted() {        
+        this.aproposAnimation();
+    },
+    data() {
+        return {
+            posts: [
+                {
+            id: 1,
+                    title: "生態系統概念的萌芽",
+                    body:
+                        "所有形態的生物都會和她們存在的環境及其他生命體互動。在二十世紀此假設引發了「生態系統」的概念，並定義其為在任何情況下的生物與環境間的相互作用。",
+            img: "/images/430-1200x800.jpg"
         },
-				{
-					id: 2,
-					title: "生態系統的組成",
-					body:
-						"生態系統由無生命的和有生命的部分組成，並已一個互相關聯的方式運作。其結構和成分受到眾多相關的環境因素所影響。這些因素的改變可以引起生態系統的轉變。部分較為重要的構成要素有：土壤、大氣層、太陽輻射、水及生物。",
-          img: "/images/435-1200x800.jpg"
-				},
-				{
-					id: 3,
-					title: "物種間的連繫",
-					body:
-						"每種生物都與其他形成環境的元素有一個連續的關係。物種在生態系統中與其他物種在食物鏈中互相聯繫及依賴，並在她們及環境之間交換能量與物質。",
-          img: "/images/447-1200x800.jpg"
-				},
-			],
-		};
-	}
+                {
+                    id: 2,
+                    title: "生態系統的組成",
+                    body:
+                        "生態系統由無生命的和有生命的部分組成，並已一個互相關聯的方式運作。其結構和成分受到眾多相關的環境因素所影響。這些因素的改變可以引起生態系統的轉變。部分較為重要的構成要素有：土壤、大氣層、太陽輻射、水及生物。",
+            img: "/images/435-1200x800.jpg"
+                },
+                {
+                    id: 3,
+                    title: "物種間的連繫",
+                    body:
+                        "每種生物都與其他形成環境的元素有一個連續的關係。物種在生態系統中與其他物種在食物鏈中互相聯繫及依賴，並在她們及環境之間交換能量與物質。",
+            img: "/images/447-1200x800.jpg"
+                },
+            ],
+        };
+    }
 };
 </script>
 

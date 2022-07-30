@@ -27,7 +27,6 @@ if(el.classList.contains("gs_reveal_fromLeft")) {
     y = 0;
 }
 el.style.transform = "translate(" + x + "px, " + y + "px)";
-// el.style.opacity = "0";
 gsap.fromTo(el, {x: x, y: y, autoAlpha: 0}, {
     duration: 5, 
     x: 0,

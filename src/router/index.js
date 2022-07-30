@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
+import Main from '@/views/Main.vue'
 import '@/assets/main.css'
 
 const routes = [
@@ -8,11 +9,20 @@ const routes = [
         name: 'Home',
         component: Home,
     },
+    {
+        path: '/main',
+        name: 'Main',
+        component: Main,
+    },
 ]
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
+    mounted(){
+        console.log('ss')
+        ScrollTrigger.refresh();
+    }
 })
 
 export default router

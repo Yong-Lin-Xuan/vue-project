@@ -1,5 +1,4 @@
 <template>
-  <TheSlider />
   <div class="main">
     <div id="bg"></div>
     <div class="shadow-b-r"></div>

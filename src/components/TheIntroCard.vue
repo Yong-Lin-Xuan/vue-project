@@ -1,7 +1,7 @@
 <template>
     <!-- 介紹圖卡 : introduceCard.scss -->
     <div class="container wrap-i justify-content-center gs_reveal">
-        <div class="item-i" v-for="(post, index) in posts" :key="post.id" :data-index="index" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+        <div class="item-i" v-for="(post, index) in posts" data-bs-toggle="modal" data-bs-target="#exampleModal" >
           <img :src="post.img" alt="">
           <div class="txt">
             <h2>{{ post.title}}</h2>
@@ -12,9 +12,6 @@
 </template>
 
 <script>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 export default {
 	name: "App",
 	data() {
@@ -43,57 +40,11 @@ export default {
 				},
 			],
 		};
-	},
-	setup() {
-    document.addEventListener("DOMContentLoaded", function() {
-      gsap.registerPlugin(ScrollTrigger);
-      
-      gsap.utils.toArray(".gs_reveal").forEach(function(elem) {
-        hide(elem); // assure that the element is hidden when scrolled into view
-        
-        ScrollTrigger.create({
-          trigger: elem,
-          onEnter: function() { animateFrom(elem) }, 
-          onEnterBack: function() { animateFrom(elem, -1) },
-          onLeave: function() { hide(elem) } // assure that the element is hidden when scrolled into view
-        });
-      });
-    });
-    const animateFrom = (elem, direction) =>{
-      direction = direction || 1;
-      var x = 0,
-          y = direction * 100;
-      if(elem.classList.contains("gs_reveal_fromLeft")) {
-        x = -100;
-        y = 0;
-      } else if (elem.classList.contains("gs_reveal_fromRight")) {
-        x = 100;
-        y = 0;
-      }
-      elem.style.transform = "translate(" + x + "px, " + y + "px)";
-      elem.style.opacity = "0";
-      gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0}, {
-        duration: 5, 
-        x: 0,
-        y: 0, 
-        autoAlpha: 1, 
-        ease: "expo", 
-        overwrite: "auto"
-      });
-    }
-    const hide = (el) =>{
-      gsap.set(el, {autoAlpha: 0});
-    }
-	},
+	}
 };
 </script>
 
 <style scoped lang="scss">
-.gs_reveal {
-  opacity: 0;
-  visibility: hidden;
-  will-change: transform, opacity;
-}
 .wrap-i{
     width: 100%;
 }

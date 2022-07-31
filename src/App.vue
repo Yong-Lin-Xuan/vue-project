@@ -1,12 +1,12 @@
 <script>
-import RwvHeader from "@/components/TheNavbar.vue"
-import RwvFooter from "@/components/TheFooter.vue"
+import RwvHeader from "@/components/TheNavbar.vue";
+import RwvFooter from "@/components/TheFooter.vue";
 export default {
   name: "App",
   components: {
     RwvHeader,
-    RwvFooter
-  }
+    RwvFooter,
+  },
 };
 </script>
 

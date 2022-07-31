@@ -1,33 +1,46 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-      <router-link to="/" class="navbar-brand ms-4">Side project demo</router-link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-2">
-            <li class="nav-item">
-              <router-link to="/main" class="nav-link active">test page</router-link>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#pic">地球概論</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#intro">生態系統</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#inform">人類的影響</a>
-            </li>
-            <li class="nav-item me-4">
-              <a class="nav-link" href="#sec">現代</a>
-            </li>
-            <div class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </div>
-          </ul>
-        </div>
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <router-link to="/" class="navbar-brand ms-4">Side project demo</router-link>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-2">
+          <li class="nav-item">
+            <router-link to="/main" class="nav-link active">test page</router-link>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#pic">地球概論</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#intro">生態系統</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#inform">人類的影響</a>
+          </li>
+          <li class="nav-item me-4">
+            <a class="nav-link" href="#sec">現代</a>
+          </li>
+          <div class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </div>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 </template>

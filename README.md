@@ -1,5 +1,8 @@
 ## 已知BUG
-- ScrollTrigger的開始值和結束值會被設置為上一頁的高度
+- none
+
+## 待調整
+- ScrollTrigger refresh
 
 # vue-project
 

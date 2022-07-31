@@ -40,12 +40,10 @@ export default {
       headerBg.style.opacity = -0.1 + this.windowTop / 2000 + "";
     },
     aproposAnimation() {
-      var n = true;
-      gsap.registerPlugin(ScrollTrigger);
-      const hide = (el) => {
+      const hide = function (el) {
         gsap.to(el, { autoAlpha: 0, overwrite: "auto" });
       };
-      const animateFrom = (el, direction) => {
+      const animateFrom = function (el, direction) {
         direction = direction || 1;
         var x = 0,
           y = direction * 100;
@@ -69,32 +67,29 @@ export default {
         );
       };
       gsap.utils.toArray(".gs_reveal").forEach(function (el) {
+        gsap.registerPlugin(ScrollTrigger);
         ScrollTrigger.create({
           trigger: el,
           onEnter: function () {
-            animateFrom(el, n);
+            animateFrom(el);
           },
           onEnterBack: function () {
             animateFrom(el, -1);
           },
           onLeave: function () {
             hide(el);
-            if (n) {
-              ScrollTrigger.refresh();
-              n = !n;
-            }
           },
           onLeaveBack: function () {
             hide(el);
           },
         });
       });
+      window.removeEventListener("scroll", this.aproposAnimation);
     },
   },
   mounted() {
+    window.addEventListener("scroll", this.aproposAnimation);
     window.addEventListener("scroll", this.onScroll);
-    ScrollTrigger.getAll().forEach((st) => st.kill());
-    this.aproposAnimation();
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.onScroll);

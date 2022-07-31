@@ -1,3 +1,11 @@
+<template>
+  <div id="app">
+    <RwvHeader />
+    <router-view></router-view>
+    <RwvFooter />
+  </div>
+</template>
+
 <script>
 import RwvHeader from "@/components/TheNavbar.vue";
 import RwvFooter from "@/components/TheFooter.vue";
@@ -9,11 +17,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div id="app">
-    <RwvHeader />
-    <router-view></router-view>
-    <RwvFooter />
-  </div>
-</template>

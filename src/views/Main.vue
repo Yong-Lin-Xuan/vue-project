@@ -1,36 +1,28 @@
 <template>
   <div class="main">
     <div id="bg"></div>
+    <TheContent />
   </div>
-  <TheSection />
 </template>
 
 <script>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
-import TheSlider from "@/components/TheSlider.vue";
-import TheTextCard from "@/components/TheTextCard.vue";
-import TheIntroCard from "@/components/TheIntroCard.vue";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import TheContent from "@/components/TheContent.vue";
-import TheSection from "@/components/TheSection.vue";
 export default {
-  name: "Animate",
+  name: "second",
   components: {
-    TheSlider,
-    TheTextCard,
-    TheIntroCard,
     TheContent,
-    TheSection,
   },
   methods: {
     onScroll(e) {
       var headerBg = document.getElementById("bg");
       this.windowTop = window.top.scrollY;
-      headerBg.style.opacity = -0.1 + this.windowTop / 2000 + "";
+      headerBg.style.opacity = 0.2 + this.windowTop / 1000 + "";
     },
     aproposAnimation() {
-      // console.log(ScrollTrigger.getAll());
+      var n = true;
+      gsap.registerPlugin(ScrollTrigger);
       const hide = (el) => {
         gsap.to(el, { autoAlpha: 0, overwrite: "auto" });
       };
@@ -49,27 +41,29 @@ export default {
           el,
           { x: x, y: y, autoAlpha: 0 },
           {
-            duration: 5,
             x: 0,
             y: 0,
             autoAlpha: 1,
+            duration: 3,
             ease: "expo",
-            overwrite: "auto",
           }
         );
       };
       gsap.utils.toArray(".gs_reveal").forEach(function (el) {
-        hide(el);
         ScrollTrigger.create({
           trigger: el,
           onEnter: function () {
-            animateFrom(el);
+            animateFrom(el, n);
           },
           onEnterBack: function () {
             animateFrom(el, -1);
           },
           onLeave: function () {
             hide(el);
+            if (n) {
+              ScrollTrigger.refresh();
+              n = !n;
+            }
           },
           onLeaveBack: function () {
             hide(el);
@@ -79,9 +73,9 @@ export default {
     },
   },
   mounted() {
+    window.addEventListener("scroll", this.onScroll);
     ScrollTrigger.getAll().forEach((st) => st.kill());
     this.aproposAnimation();
-    window.addEventListener("scroll", this.onScroll);
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.onScroll);
@@ -96,54 +90,11 @@ export default {
   background-color: #000;
   #bg {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+    opacity: 0.2;
     background: url(/images/993-1440x900.jpg);
     background-attachment: fixed;
-  }
-}
-.shadow-b {
-  &-r {
-    content: "";
-    width: 100%;
-    height: 50%;
-    position: absolute;
-    background: linear-gradient(to bottom, #000, transparent 60%);
-  }
-}
-.shadow-w {
-  content: "";
-  bottom: 0;
-  width: 100%;
-  height: 10%;
-  position: absolute;
-  background: linear-gradient(to top, #fff, transparent);
-}
-
-.title {
-  position: relative;
-  width: 100%;
-  margin: auto;
-  text-align: center;
-  ::before,
-  ::after {
-    content: "";
-    display: block;
-    height: 5px;
-    width: 1em;
-    flex-grow: 1;
-    background-color: #aaa;
-    margin: auto 1em;
-  }
-  h1 {
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 350%;
-    padding-top: 0.5em;
-    margin-bottom: 0.5em;
-    display: flex;
   }
 }
 </style>

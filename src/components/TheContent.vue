@@ -1,29 +1,24 @@
 <template>
   <div class="container">
-    <div class="features">
+    <div
+      :class="'feature ipsGrid ipsGrid_collapsePhone' + [post.id % 2 == 0 ? '' : ' reverse']"
+      v-for="(post, index) in posts"
+      :key="index"
+      :data-index="index"
+    >
       <div
         :class="
-          'feature ipsSpacer_bottom_double ipsGrid ipsGrid_collapsePhone' +
-          [post.id % 2 == 0 ? '' : ' reverse']
+          'featured-image-container ipsGrid_span5 gs_reveal' +
+          [post.id % 2 == 0 ? ' gs_reveal_fromLeft' : ' gs_reveal_fromRight']
         "
-        v-for="(post, index) in posts"
-        :key="index"
-        :data-index="index"
       >
-        <div
-          :class="
-            'featured-image-container ipsGrid_span5 gs_reveal' +
-            [post.id % 2 == 0 ? ' gs_reveal_fromLeft' : ' gs_reveal_fromRight']
-          "
-        >
-          <div class="card">
-            <img :src="post.img" alt="" />
-          </div>
+        <div class="card">
+          <img :src="post.img" alt="" />
         </div>
-        <div :class="'ipsGrid_span7' + [post.id % 2 == 0 ? ' ipsType_left' : ' ipsType_right']">
-          <h2 class="heading_large gs_reveal">{{ post.title }}</h2>
-          <p class="gs_reveal text-white">{{ post.body }}</p>
-        </div>
+      </div>
+      <div :class="'ipsGrid_span7' + [post.id % 2 == 0 ? ' ipsType_left' : ' ipsType_right']">
+        <h2 class="heading_large gs_reveal">{{ post.title }}</h2>
+        <p class="gs_reveal text-white">{{ post.body }}</p>
       </div>
     </div>
   </div>
@@ -70,9 +65,6 @@ body {
 .ipsType_center {
   text-align: center;
 }
-.ipsSpacer_bottom_double {
-  margin-bottom: 30px;
-}
 .ipsGrid {
   display: inline-block;
   display: flex;
@@ -109,6 +101,7 @@ body {
   margin-left: 0;
 }
 .feature {
+  padding: 30px;
   display: flex;
   align-items: center;
 }

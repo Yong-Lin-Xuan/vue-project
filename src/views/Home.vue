@@ -5,7 +5,7 @@
     <div id="bg"></div>
     <div class="shadow-b-r"></div>
     <div class="shadow-w"></div>
-    <div class="title text-white" id="pic"><h1>地球概論</h1></div>
+    <div class="title text-white gs_reveal" id="pic"><h1>地球概論</h1></div>
     <TheTextCard />
     <div class="title text-white gs_reveal" id="intro"><h1>生態系統</h1></div>
     <TheIntroCard />
@@ -25,7 +25,7 @@ import TheIntroCard from "@/components/TheIntroCard.vue";
 import TheContent from "@/components/TheContent.vue";
 import TheSection from "@/components/TheSection.vue";
 export default {
-  name: "Animate",
+  name: "home",
   components: {
     TheSlider,
     TheTextCard,
@@ -34,15 +34,15 @@ export default {
     TheSection,
   },
   methods: {
-    onScroll(e) {
+    onScroll() {
       var headerBg = document.getElementById("bg");
       this.windowTop = window.top.scrollY;
       headerBg.style.opacity = -0.1 + this.windowTop / 2000 + "";
     },
     aproposAnimation() {
+      var n = true;
+      gsap.registerPlugin(ScrollTrigger);
       const hide = (el) => {
-        // console.log("refresh");
-        ScrollTrigger.refresh();
         gsap.to(el, { autoAlpha: 0, overwrite: "auto" });
       };
       const animateFrom = (el, direction) => {
@@ -72,13 +72,17 @@ export default {
         ScrollTrigger.create({
           trigger: el,
           onEnter: function () {
-            animateFrom(el);
+            animateFrom(el, n);
           },
           onEnterBack: function () {
             animateFrom(el, -1);
           },
           onLeave: function () {
             hide(el);
+            if (n) {
+              ScrollTrigger.refresh();
+              n = !n;
+            }
           },
           onLeaveBack: function () {
             hide(el);
@@ -88,10 +92,9 @@ export default {
     },
   },
   mounted() {
-    ScrollTrigger.getAll().forEach((st) => st.kill());
-    gsap.registerPlugin(ScrollTrigger);
-    this.aproposAnimation();
     window.addEventListener("scroll", this.onScroll);
+    ScrollTrigger.getAll().forEach((st) => st.kill());
+    this.aproposAnimation();
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.onScroll);
@@ -103,13 +106,12 @@ export default {
 .main {
   position: relative;
   width: 100%;
-  background-color: #000;
+  background-color: rgba($color: #000000, $alpha: 1);
   #bg {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+    opacity: 0;
     background: url(/images/993-1440x900.jpg);
     background-attachment: fixed;
   }

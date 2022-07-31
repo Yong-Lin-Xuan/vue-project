@@ -4,6 +4,6 @@ import router from "@/router";
 
 createApp(App).use(router).mount("#app");
 
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
+import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "/node_modules/bootstrap/dist/js/bootstrap.min.js";
 // import '@/components/scroll'

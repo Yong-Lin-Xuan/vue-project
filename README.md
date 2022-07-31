@@ -2,7 +2,7 @@
 - none
 
 ## 待調整
-- ScrollTrigger refresh
+- TheContent RWD
 
 # vue-project
 

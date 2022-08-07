@@ -1,6 +1,6 @@
 <template>
   <!-- 介紹圖卡 : introduceCard.scss -->
-  <div class="container wrap-i justify-content-center gs_reveal">
+  <div class="container wrap-i justify-content-center back">
     <div
       class="item-i"
       v-for="(post, index) in posts"

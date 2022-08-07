@@ -8,8 +8,8 @@
     >
       <div
         :class="
-          'featured-image-container ipsGrid_span5 gs_reveal' +
-          [post.id % 2 == 0 ? ' gs_reveal_fromLeft' : ' gs_reveal_fromRight']
+          'featured-image-container ipsGrid_span5 back' +
+          [post.id % 2 == 0 ? ' back_left' : ' back_right']
         "
       >
         <div class="card">
@@ -17,8 +17,8 @@
         </div>
       </div>
       <div :class="'ipsGrid_span7' + [post.id % 2 == 0 ? ' ipsType_left' : ' ipsType_right']">
-        <h2 class="heading_large gs_reveal">{{ post.title }}</h2>
-        <p class="gs_reveal text-white">{{ post.body }}</p>
+        <h2 class="heading_large back">{{ post.title }}</h2>
+        <p class="back text-white">{{ post.body }}</p>
       </div>
     </div>
   </div>

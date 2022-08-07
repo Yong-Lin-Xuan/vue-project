@@ -1,31 +1,52 @@
 <template>
-  <div class="gs_reveal"></div>
   <TheSlider />
   <div class="main">
     <div id="bg"></div>
     <div class="shadow-b-r"></div>
     <div class="shadow-w"></div>
-    <div class="title text-white gs_reveal" id="pic"><h1>地球概論</h1></div>
+    <div class="flex">
+      <img
+        ref=""
+        class="top-left hs"
+        src="@/assets/img/undraw_woman_re_afr8.svg"
+        style="max-height: 10em"
+      />
+      <div class="title text-white back" id="pic"><h1>地球概論</h1></div>
+    </div>
     <TheTextCard />
-    <div class="title text-white gs_reveal" id="intro"><h1>生態系統</h1></div>
+    <div class="flex" style="justify-content: end">
+      <img
+        class="top-right hss"
+        src="../assets/img/undraw_traveling_2vx4.svg"
+        style="max-height: 10em"
+      />
+      <div class="title text-white back" id="intro"><h1>生態系統</h1></div>
+    </div>
     <TheIntroCard />
-    <div class="title text-white gs_reveal" id="inform"><h1>人類的影響</h1></div>
+    <div class="title text-white back" id="inform"><h1>人類的影響</h1></div>
     <TheContent />
-    <div class="title gs_reveal" id="sec"><h1>現代</h1></div>
+    <div class="title back" id="sec"><h1>現代</h1></div>
   </div>
   <TheSection />
 </template>
 
+<!-- 
+    var start, end;
+    start = new Date().getTime();
+    end = new Date().getTime();
+    console.log(end - start); 
+-->
+
 <script>
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 import TheSlider from "@/components/TheSlider.vue";
 import TheTextCard from "@/components/TheTextCard.vue";
 import TheIntroCard from "@/components/TheIntroCard.vue";
 import TheContent from "@/components/TheContent.vue";
 import TheSection from "@/components/TheSection.vue";
 export default {
-  name: "home",
   components: {
     TheSlider,
     TheTextCard,
@@ -37,68 +58,82 @@ export default {
     onScroll() {
       var headerBg = document.getElementById("bg");
       this.windowTop = window.top.scrollY;
-      headerBg.style.opacity = -0.1 + this.windowTop / 2000 + "";
+      headerBg.style.opacity = -0.1 + this.windowTop / 2000;
     },
-    aproposAnimation() {
-      const hide = function (el) {
-        gsap.to(el, { autoAlpha: 0, overwrite: "auto" });
-      };
-      const animateFrom = function (el, direction) {
-        direction = direction || 1;
-        var x = 0,
-          y = direction * 100;
-        if (el.classList.contains("gs_reveal_fromLeft")) {
+    refresh() {
+      // ScrollTrigger.refresh();
+    },
+    scrollAnimation() {
+      const { hs, hss } = this.$refs;
+      gsap.utils.toArray(".back").forEach(function (el) {
+        var x = 0;
+        if (el.classList.contains("back_left")) {
           x = -100;
-          y = 0;
-        } else if (el.classList.contains("gs_reveal_fromRight")) {
+        } else if (el.classList.contains("back_right")) {
           x = 100;
-          y = 0;
         }
-        gsap.fromTo(
-          el,
-          { x: x, y: y, autoAlpha: 0 },
-          {
-            x: 0,
-            y: 0,
-            autoAlpha: 1,
-            duration: 3,
-            ease: "expo",
-          }
-        );
-      };
-      gsap.utils.toArray(".gs_reveal").forEach(function (el) {
-        gsap.registerPlugin(ScrollTrigger);
         ScrollTrigger.create({
           trigger: el,
-          onEnter: function () {
-            animateFrom(el);
+          onEnter() {
+            gsap.from(el, { x: x, y: 100, duration: 1.5, autoAlpha: 0, ease: "back" });
           },
-          onEnterBack: function () {
-            animateFrom(el, -1);
-          },
-          onLeave: function () {
-            hide(el);
-          },
-          onLeaveBack: function () {
-            hide(el);
+          onEnterBack() {
+            gsap.from(el, { x: x, y: -100, duration: 1.5, autoAlpha: 0, ease: "back" });
           },
         });
       });
-      window.removeEventListener("scroll", this.aproposAnimation);
+      gsap.from(".hs", {
+        scrollTrigger: {
+          trigger: ".hs",
+          scrub: 3,
+          start: "top 90%",
+          end: "bottom 30%",
+          markers: true,
+        },
+        x: -300,
+      });
+      gsap.from(".hss", {
+        scrollTrigger: {
+          trigger: ".hss",
+          scrub: 3,
+          start: "top 90%",
+          end: "bottom 30%",
+          markers: true,
+        },
+        x: 300,
+      });
     },
   },
   mounted() {
-    window.addEventListener("scroll", this.aproposAnimation);
+    var start, end;
+    start = new Date().getTime();
+    ScrollTrigger.getAll().forEach((st) => st.kill());
+    this.scrollAnimation();
+    window.addEventListener("scroll", this.refresh, { once: true });
     window.addEventListener("scroll", this.onScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.onScroll);
+    end = new Date().getTime();
+    console.log(end - start);
   },
 };
 </script>
 
 <style scoped lang="scss">
+.flex {
+  display: flex;
+  align-items: center;
+}
+.top {
+  &-left {
+    position: absolute;
+    z-index: 1;
+  }
+  &-right {
+    position: absolute;
+    z-index: 1;
+  }
+}
 .main {
+  overflow-x: hidden;
   position: relative;
   width: 100%;
   background-color: rgba($color: #000000, $alpha: 1);

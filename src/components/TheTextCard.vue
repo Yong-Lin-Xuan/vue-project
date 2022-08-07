@@ -1,6 +1,6 @@
 <template>
   <div class="container wrap justify-content-center mt-2">
-    <div class="item gs_reveal" v-for="post in posts">
+    <div class="item back" v-for="post in posts">
       <img :src="post.img" class="img-thumbnail" />
       <div class="txt">
         <h2>{{ post.title }}</h2>
